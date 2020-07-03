@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>An Example Form</title>
+    <style media="screen">
+      .signup{border:1px solid #999999;
+      font: normal 14px helvitica; color:#444444;}
+    </style>
+    <script>
+        function validate(form) {
+          fail = validateForename(form.forename.value)
+          fail += validateSurname(form.surname.value)
+          fail += validateUsername(form.username.value)
+          fail += validatePassword(form.password.value)
+          fail += validateAge(form.age.value)
+          fail += validateEmail(form.email.value)
+          if (fail == "") return true
+          else {alert(fail); return false}
+        }
+        function validateForename(field) {
+          if (field == "") return "No Forename was entered.\n"
+          return ""
+        }
+        function validateSurname(field) {
+          if (field == "") return "No Surname was entered. \n"
+          return ""
+        }
+        function validateUsername(field){
+          if (field == "") return "No Username was entered. \n"
+          else if (field.length < 5)
+              return "Username must be at least 5 charcters. \n"
+          else if (/[^a-zA-Z0-9_-]/.test(field))
+              return "Only a-z, A-z, 0-9, - and _ are allowed as Usernames. \n"
+          return ""
+        }
+        function validatePassword(field){
+          if (field = "") return "No Password was entered. \n"
+          else if (field.length < 6)
+              return "Passwords must be at least 6 characters. \n"
+          else if (!/[a-z]/.test(field) || /[A-Z]/.test(field) ||
+                  !/[0-9]/.test(field))
+              return "Password require one each of a-z, A-Z and 0-9 \n"
+          return ""
+        }
+        function validateAge(field){
+          if (isNaN(field)) return "No age was entered. \n"
+          else if (field < 18 || field > 110)
+              return "Age must be between 18 and 110. \n"
+        }
+        function validateEmail(field){
+          if(field == "") return "No Email was entered. \n"
+            else if (!((field.indexOf(".") > 0) &&
+                      (field.indexOf("@") > 0)) ||
+                      /[^a-zA-Z0-9.@_-]/.test(field))
+            return "The Email address is invalid. \n"
+          return ""
+        }
+    </script>
+  </head>
+  <body>
+    <table class="signup" border="0" cellpadding="2"
+        cellspacing="5" bgcolor="#eeeeee">
+    <th colspan="2" align="center">Signup Form</th>
+    <form onSubmit="return validate(this)" action="" method="post">
+        <tr><td>forename</td><td><input type="text"
+          maxlength="32" name="forename" /></td>
+        </tr>
+        <tr><td>surname</td><td><input type="text"
+          maxlength="32" name="surname" /></td>
+        </tr>
+        <tr><td>username</td><td><input type="text"
+          maxlength="32" name="username" /></td>
+        </tr>
+        <tr><td>password</td><td><input type="text"
+          maxlength="32" name="password" /></td>
+        </tr>
+        <tr><td>age</td><td><input type="text"
+          maxlength="32" name="age" /></td>
+        </tr>
+        <tr><td>email</td><td><input type="text"
+          maxlength="32" name="email" /></td>
+        </tr>
+        <tr><td colspan="2" align="center">
+          <input type="submit" value="signup"/></td>
+        </tr>
+    </form>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+
+  <title>Frontend Mentor | Base Apparel coming soon page</title>
+
+  <script>
+      //script to check email if it is in the rigth.
+
+      function validate() {
+         info = document.getElementById('info')
+        error = document.getElementById('error').style
+        email = document.getElementById('email').value
+          if(email == ""){
+             info.innerHTML = "No email entered"
+             info.style.color = "red"
+             error.visibility = "visible"
+           }
+          else if (!((email.indexOf(".") > 0) && (email.indexOf("@") > 0)) ||
+                      /[^a-zA-Z0-9.@_-]/.test(email)){
+                      info.innerHTML = "Invalid email entered"
+                      info.style.color = "red"
+                      error.visibility = "visible"
+          }
+          else {
+          info.innerHTML = "This is a valid email"
+          info.style.color = "green"
+          error.visibility = "hidden"
+        }
+      }
+  </script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="head">
+        <div class="logo">
+          <img alt="Logo" src="images/logo.svg" />
+        </div>
+
+          <span class="title1">
+            WE'RE
+          </span>
+          <span class="title2">
+            COMING
+          </span>
+          <span class="title2">
+            SOON
+          </span>
+
+          <p class="h-content">
+            Hello fellow shoppers! We're currently building our new fashion store.
+            Add your email below to stay up-to-date with announcements and our launch deals.
+          </p>
+              <div id="error" class="error"></div>
+            <input type="text" name="email" id="email" class="text" value="Email Address" />
+            <input type="submit" value=">" class="submit" onmouseover="validate()"  />
+            <div id="info"></div>
+    </div>
+    <div class="imag">
+    </div>
+  </div>
+  <footer>
+    <p class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="#">koas</a>.
+    </p>
+  </footer>
+</body>
+</html>
